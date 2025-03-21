@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Tarefas{% endblock %}
+
+{% block content %}
+  <div class="task-list-container">
+    <h1>Lista de Tarefas</h1>
+
+    <!-- Criação de novas tarefas -->
+     <div>
+        <form method="get" class="task-list-filter-form">
+            <label>Criar uma nova tarefa:</label>
+            <a href="{% url 'task_create' %}" class="btn btn-task-detail">Criar tarefa</a>
+        </form>
+     </div>
+
+    <!-- Filtro de status de tarefas 
+    <div class="task-filters">
+      <form method="get" class="task-list-filter-form">
+        <label for="status">Filtrar por Status:</label>
+        <select name="status" id="status">
+          <option value="">Todos</option>
+          <option value="0" {% if request.GET.status == '0' %}selected{% endif %}>Pendente</option>
+          <option value="1" {% if request.GET.status == '1' %}selected{% endif %}>Em Andamento</option>
+          <option value="2" {% if request.GET.status == '2' %}selected{% endif %}>Concluído</option>
+        </select>
+        <button type="submit">Filtrar</button>
+      </form>
+    </div>
+    -->
+
+    <!-- Lista de Tarefas -->
+    <div class="task-list">
+      {% if tasks %}
+        <table class="task-list-table">
+          <thead>
+            <tr>
+              <th>Título</th>
+              <th>Status</th>
+              <th>Data de Criação</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for task in tasks %}
+              <tr>
+                <td>{{ task.task_title }}</td>
+                <td>
+                  {% if task.status == 0 %}
+                    <span class="badge badge-pending">Pendente</span>
+                  {% elif task.status == 1 %}
+                    <span class="badge badge-in-progress">Em Andamento</span>
+                  {% elif task.status == 2 %}
+                    <span class="badge badge-completed">Concluído</span>
+                  {% endif %}
+                </td>
+                <td>{{ task.created_date|date:"d/m/Y H:i" }}</td>
+                <td>
+                  <a href="{% url 'task_detail' task.pk %}" class="btn btn-task-detail">Ver</a>
+                  <a href="{% url 'task_update' task.pk %}" class="btn btn-task-update">Editar</a>
+                  <a href="{% url 'task_delete' task.pk %}" class="btn btn-task-delete">Excluir</a>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% else %}
+        <p>Não há tarefas para exibir.</p>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

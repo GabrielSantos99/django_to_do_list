@@ -1,0 +1,13 @@
+.error {
+    display: inline-block;
+    padding-right: 20px;
+    border-radius: 5px;
+    color: white;
+    background-color: red;
+}
+
+.form-errors {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}

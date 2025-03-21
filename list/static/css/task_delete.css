@@ -1,0 +1,58 @@
+.task-delete-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.task-delete-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #d9534f;
+    margin-bottom: 20px;
+}
+
+.task-delete-message {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.task-delete-actions {
+    display: flexbox;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.task-delete-actions .btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    width: 48%;
+}
+
+.task-delete-actions .btn-confirm {
+    background-color: #d9534f;
+    color: #fff;
+    border: none;
+}
+
+.task-delete-actions .btn-confirm:hover {
+    background-color: #c9302c;
+}
+
+.task-delete-actions .btn-cancel {
+    background-color: #f7f7f7;
+    color: #333;
+    border: 1px solid #ddd;
+}
+
+.task-delete-actions .btn-cancel:hover {
+    background-color: #e6e6e6;
+}

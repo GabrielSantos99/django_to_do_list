@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="task-delete-container">
+    <h2 class="task-delete-title">Excluir Tarefa</h2>
+    <p class="task-delete-message">
+      Você tem certeza de que deseja excluir esta tarefa?
+    </p>
+    <div class="task-delete-actions">
+      <form method="POST">
+        {% csrf_token %}
+        <a href="{% url 'task_list' %}" class="btn btn-cancel">Cancelar</a>
+        <button type="submit" class="btn btn-confirm">Excluir</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}

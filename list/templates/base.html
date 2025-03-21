@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Todolist{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/task_list.css' %}">
+    <link rel="stylesheet" href="{% static 'css/task_detail.css' %}">
+    <link rel="stylesheet" href="{% static 'css/task_update.css' %}">
+    <link rel="stylesheet" href="{% static 'css/task_delete.css' %}">
+    <link rel="stylesheet" href="{% static 'css/task_create.css' %}?v=2">
+</head>
+<body>
+    {% if messages %}
+        <ul class="messages">
+          {% for message in messages %}
+            <li class="{{ message.tags }}">{{ message }}</li>
+          {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if form.non_field_errors %}
+        <div class="error">
+            {{ form.non_field_errors }}
+        </div>
+    {% endif %}
+    <main>
+        <div class="container">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Todolist. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>

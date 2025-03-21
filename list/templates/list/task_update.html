@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="task-update-container">
+    <h2 class="page-title">Atualizar Tarefa</h2>
+    
+    <form method="POST" class="task-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-update">Atualizar</button>
+            <a href="{% url 'task_list' %}" class="btn btn-cancel">Cancelar</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

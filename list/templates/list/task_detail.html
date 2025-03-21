@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Detalhe da Tarefa - {{ task.task_title }}{% endblock %}
+
+{% block content %}
+<div class="task-detail">
+    <h1>{{ task.task_title }}</h1>
+    
+    <div class="task-meta">
+        <span><strong>Status:</strong> {{ task.get_status_display }}</span>
+        {% if task.conclusion_date %}
+            <span><strong>Data de Conclusão:</strong> {{ task.conclusion_date|date:"d/m/Y H:i" }}</span>
+        {% endif %}
+        <span><strong>Criado em:</strong> {{ task.created_date|date:"d/m/Y H:i" }}</span>
+    </div>
+    
+    <div class="task-description">
+        <h3>Descrição</h3>
+        <p>{{ task.task_description }}</p>
+    </div>
+
+    <div class="task-actions">
+        <a href="{% url 'task_update' task.pk %}" class="btn btn-primary">Editar</a>
+        <a href="{% url 'task_list' %}" class="btn btn-secondary">Voltar para a lista</a>
+    </div>
+</div>
+{% endblock %}
